@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <title>Hello World!</title>
+    <style>
+        #input-container {
+            width: 100%;
+            max-width: 700px; /* Adjust max-width to your preference */
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+        }
+        #chat-box {
+			border-radius: 25px;
+            flex: 1;
+            border: none;
+            outline: none;
+            padding-left: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+            min-height: 50px; /* Initial height */
+            overflow: hidden;
+            resize: none; /* Prevent resizing */
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body style="margin: 0px; font-family: Arial, Helvetica, sans-serif;">
+    <div style="width: 100vw; min-height: 100vh; display: flex;">
+        <div id="nav" style="background-color: blue;"></div>
+        <div style="flex:1; display: flex; flex-direction: column; align-items: center; background-color: #adadad;">
+            <div style="flex: 1; background-color: bisque; width: 100%; display: flex; justify-content: center;">
+                <button id="nav-btn" style="position: absolute; z-index: 10; left: 0px; top: 0px;">X</button>
+                <h1 style="font-size: 50px;">Welcome</h1>
+            </div>
+            <form id="chat-form" style="display: flex; width: 100%; justify-content: center;">
+                <div id="input-container">
+                    <textarea id="chat-box" placeholder="Type your message here..."></textarea>
+                </div>
+				<div style="display: flex; align-items: end;">
+					<button type="submit" name="send-chat" id="send-chat" style="border-radius: 50px; min-width: 100px; min-height: 50px; max-height: 50px;">
+						Send
+					</button>
+				</div>
+			</form>
+            <div id="dispose" style="flex:1"></div>
+        </div>
+    </div>
+    <script type="module" src="init.js"></script>
+    <script>
+        // JavaScript for auto-expanding textarea
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatBox = document.getElementById('chat-box');
+            chatBox.addEventListener('input', function () {
+                autoExpand(chatBox);
+            });
+        });
+
+        function autoExpand(textarea) {
+            // Reset height to auto to allow it to shrink if needed
+            textarea.style.height = 'auto';
+            // Set the computed height of the textarea
+            textarea.style.height = textarea.scrollHeight + 'px';
+        }
+        
+
+    </script>
+</body>
+</html>
