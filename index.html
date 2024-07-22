@@ -2,12 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    
     <title>Hello World!</title>
+    <link rel="stylesheet" href="index.css">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' http://localhost:8000">
     <style>
         #input-container {
             width: 100%;
-            max-width: 700px; /* Adjust max-width to your preference */
+            max-width: 700px;
             border: 1px solid #ccc;
             border-radius: 25px;
             display: flex;
@@ -21,52 +23,53 @@
             padding-left: 10px;
             font-size: 16px;
             line-height: 1.5;
-            min-height: 50px; /* Initial height */
+            min-height: 50px;
             overflow: hidden;
-            resize: none; /* Prevent resizing */
+            resize: none; 
             box-sizing: border-box;
         }
     </style>
 </head>
-<body style="margin: 0px; font-family: Arial, Helvetica, sans-serif;">
+<body style="margin: 0px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: rgba(0, 0, 0,0.7);">
     <div style="width: 100vw; min-height: 100vh; display: flex;">
-        <div id="nav" style="background-color: blue;"></div>
-        <div style="flex:1; display: flex; flex-direction: column; align-items: center; background-color: #adadad;">
-            <div style="flex: 1; background-color: bisque; width: 100%; display: flex; justify-content: center;">
-                <button id="nav-btn" style="position: absolute; z-index: 10; left: 0px; top: 0px;">X</button>
-                <h1 style="font-size: 50px;">Welcome</h1>
+        <div id="nav" style="background-color: rgb(44, 39, 39); "></div>
+        <div style="flex:1; display: flex; flex-direction: column; align-items: center;">
+            <div style="font-weight: lighter; color: white; text-align: center; padding: 20px; display: flex; align-items: center;">
+                <img src="./ai2-unscreen.gif" width="80vw" height="60vw"/>
+                <p id="orcha-heading">Orchestrater</p>
             </div>
-            <form id="chat-form" style="display: flex; width: 100%; justify-content: center;">
-                <div id="input-container">
-                    <textarea id="chat-box" placeholder="Type your message here..."></textarea>
+            <div style="flex: 1; width: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <button id="nav-btn" style="position: absolute; z-index: 10; left: 0px; top: 0px;">X</button>
+                    <div>
+                        <!-- <button id="voice" style="background-color: cadetblue;">Click me</button>
+                        <div class="output" style="color: white;">Color goes here</div> -->
+                        <h1 id="welcome" style="color: white; text-align: center; font-weight: bold; letter-spacing: -3px;">Your Personal<br/>LLM</h1>
+                    </div>
+                </div>
+                <div id="content" style="flex: 1;"></div>
+            </div>
+            <!-- <form>
+                <button id="recordBtn">Start Recording</button>
+                <button id="stopBtn" disabled>Stop Recording</button>
+                <button id="sendBtn" disabled>Send Audio</button>
+                <audio id="liveAudio" controls></audio>
+                <audio id="player" controls></audio>
+            </form> -->
+            <form id="chat-form" style="display: flex; width: 100%; justify-content: center; max-width: 40vw; margin: 20px;">
+                <div id="input-container" style="margin-right: 5px;">
+                    <input id="chat-box" placeholder="Get started" style="background-color: rgb(44, 39, 39); color: white; outline: none;"></input>
                 </div>
 				<div style="display: flex; align-items: end;">
-					<button type="submit" name="send-chat" id="send-chat" style="border-radius: 50px; min-width: 100px; min-height: 50px; max-height: 50px;">
+					<button type="submit" name="send-chat" id="send-chat" style="background-color: blanchedalmond; border: none; border-radius: 50px; min-width: 100px; min-height: 50px; max-height: 50px;">
 						Send
-					</button>
+                    </button>
 				</div>
 			</form>
             <div id="dispose" style="flex:1"></div>
         </div>
     </div>
     <script type="module" src="init.js"></script>
-    <script>
-        // JavaScript for auto-expanding textarea
-        document.addEventListener('DOMContentLoaded', function () {
-            const chatBox = document.getElementById('chat-box');
-            chatBox.addEventListener('input', function () {
-                autoExpand(chatBox);
-            });
-        });
-
-        function autoExpand(textarea) {
-            // Reset height to auto to allow it to shrink if needed
-            textarea.style.height = 'auto';
-            // Set the computed height of the textarea
-            textarea.style.height = textarea.scrollHeight + 'px';
-        }
-        
-
-    </script>
+    <!-- <script type="module" src="renderer.js"></script> -->
 </body>
 </html>

@@ -1,25 +1,48 @@
-const { app, BrowserWindow } = require('electron/main')
+const { app, BrowserWindow, session } = require('electron/main')
+const path=require('path')
+
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-	autoHideMenuBar: true,
-	webPreferences:{
-		preload: '/Desktop/amFOSS/LLM-agent/llm-agent/preload.js'
-	}
+    autoHideMenuBar: true,
+    transparent: true,
+    //frame: false,
+    webPreferences:{
+      enableRemoteModule: true,
+      nodeIntegration: true,
+      preload: path.join(__dirname, "./preload.js"),
+  }
+	// webPreferences:{
+	// 	preload: 'preload.js'
+	// }
 	
   })
 
   win.loadFile('index.html')
+
+  session.defaultSession.setPermissionRequestHandler((webContents, permission, callback) => {
+    if (permission === 'media') {
+      callback(true); // Grant media permissions
+    } else {
+      callback(false);
+    }
+  });
+  
+
+
+
 }
+
 
 app.whenReady().then(() => {
   createWindow()
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
+    	createWindow()
     }
   })
 })
@@ -32,7 +55,7 @@ app.on('window-all-closed', () => {
 
 "use strict"
 
-require("./App");
+//require("./App");
 
 const { ipcMain } = require("electron");
 
@@ -63,7 +86,7 @@ const { ipcMain } = require("electron");
 // })
 
 ipcMain.on('activate-app', ()=>{
-	console.log('Voice activation successful');
+	console.log('Voice activation succesfull');
 	if(win){
 		win.show();
 	}

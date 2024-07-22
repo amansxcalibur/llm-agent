@@ -1,0 +1,62 @@
+@media screen and (max-width: 1100px) {
+    #nav{
+        position: absolute;
+        z-index: 10;
+        width: 80vw;
+        max-width: 400px;
+        height: 100vh;
+        display: none;
+    }
+    #content{
+        width: 100%;
+    }
+    
+}
+@media screen and (min-width: 1101px){
+    #nav{
+        min-width: 400px;
+    }
+    #content{
+        min-width: 800px;
+    }
+}
+@media screen and (max-width: 800px) {
+    #orcha-heading{
+        font-size: 30px;
+    }
+    #welcome{
+        font-size: 30px;
+    }
+}
+@media screen and (min-width: 800px) {
+    #orcha-heading{
+        font-size: 3vw;
+    }
+    #welcome{
+        font-size: 5vw;
+    }
+}
+
+.user-text{
+    background-color: rgb(51, 47, 47);
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    min-width: 50vw;
+    max-width: 80vw;
+    height: auto;
+    display: flex;
+}
+.machine-text{
+    /* background-color: black; */
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+}
+.user-text-container{
+    display: flex;
+    justify-content: end;
+}
+/* .require-blur{
+    backdrop-filter: blur(10px);
+} */
