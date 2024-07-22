@@ -24,7 +24,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 contextBridge.exposeInMainWorld("api", {
 	sendFormData: ()=>{
 		const node=document.createElement('div');
-		const innerText=document.createElement('textarea');
+		const innerText=document.createElement('p');
 		const input=document.getElementById('chat-box').value;
 		const textnode = document.createTextNode(input);
 		innerText.classList.add('user-text');
@@ -60,12 +60,25 @@ contextBridge.exposeInMainWorld("api", {
 			 return response.json();
 		})
 		.then(data=>{
-			const machine=data.message;
+			const machine_text=data.message;
 			const noder=document.createElement('div');
-			const textnode = document.createTextNode(machine);
+			const textnode = document.createTextNode(machine_text);
 			noder.classList.add('machine-text');
 			noder.appendChild(textnode);
-			document.getElementById("content").appendChild(noder)
+			if (data.url){
+				const machine_img_url=data.url;
+				const img_elem=document.createElement('img');
+				img_elem.src=machine_img_url;
+				noder.appendChild(img_elem);
+			}
+			const logo=document.createElement('img');
+			logo.src='./ai2-unscreen.gif'
+			logo.classList.add('side-logo');
+			const test=document.createElement('div');
+			test.appendChild(logo)
+			test.appendChild(noder)
+			test.style.display='flex';
+			document.getElementById("content").appendChild(test)
 		})
 	  }
 })

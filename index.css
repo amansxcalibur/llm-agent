@@ -18,8 +18,27 @@
     }
     #content{
         min-width: 800px;
+        max-width: 50vw;
+    }
+    #logo{
+        height: 4vw;
+        width: 5.33vw;
     }
 }
+
+.side-logo{
+    width: 80px;
+    height: 60px;
+    margin: -10px;
+}
+
+#orcha-heading{
+    margin: 0;
+}
+#logo{
+    margin: -15px;
+}
+
 @media screen and (max-width: 800px) {
     #orcha-heading{
         font-size: 30px;
@@ -42,10 +61,11 @@
     color: white;
     padding: 10px;
     border-radius: 20px;
-    min-width: 50vw;
+    /* min-width: 50vw; */
     max-width: 80vw;
     height: auto;
     display: flex;
+    margin:20px;
 }
 .machine-text{
     /* background-color: black; */
