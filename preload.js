@@ -26,6 +26,7 @@ contextBridge.exposeInMainWorld("api", {
 		const node=document.createElement('div');
 		const innerText=document.createElement('p');
 		const input=document.getElementById('chat-box').value;
+		if (input!=""){
 		const textnode = document.createTextNode(input);
 		innerText.classList.add('user-text');
 		node.classList.add('user-text-container')
@@ -37,6 +38,7 @@ contextBridge.exposeInMainWorld("api", {
 		}
 		document.getElementById('chat-box').value="";
 		return input;
+	}
 	},
 	checkFormData: ()=>{
 		document.getElementById('chat-box').value="";
@@ -72,9 +74,10 @@ contextBridge.exposeInMainWorld("api", {
 				noder.appendChild(img_elem);
 			}
 			const logo=document.createElement('img');
-			logo.src='./ai2-unscreen.gif'
+			logo.src='./Type 1.gif'
 			logo.classList.add('side-logo');
 			const test=document.createElement('div');
+			test.classList.add('machine-container')
 			test.appendChild(logo)
 			test.appendChild(noder)
 			test.style.display='flex';

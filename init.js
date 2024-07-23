@@ -28,7 +28,9 @@ document.getElementById("send-chat").addEventListener("click", async (e) => {
 	e.preventDefault();
 	const prompt=window.api.sendFormData();
 	console.log(prompt);
+	if (prompt!=undefined){
 	ResponseText(prompt)
+	}
 })	
 
 function ResponseText(prompt){
@@ -59,7 +61,7 @@ document.getElementById("chat-box").addEventListener("focusout", async (e) => {
 			document.getElementById("dispose").style.flex='1';
 			document.getElementById('chat-form').style.maxWidth="40vw";
 			window.api.checkFormData();
-	}},100)
+	}},200)
 })
 // document.addEventListener('DOMContentLoaded', () => {
 //     const form = document.getElementById('chat-form');

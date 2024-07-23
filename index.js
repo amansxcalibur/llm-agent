@@ -9,6 +9,11 @@ const createWindow = () => {
     height: 600,
     autoHideMenuBar: true,
     transparent: true,
+    vibrancy:{
+      theme: 'light',
+      effect: 'acrylic',
+      disableOnBlur: true
+    },
     //frame: false,
     webPreferences:{
       enableRemoteModule: true,
